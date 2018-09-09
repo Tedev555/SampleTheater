@@ -18,10 +18,11 @@
             android:textStyle="bold"/>
 
         <ImageView
+            android:layout_gravity="center_horizontal"
             android:id="@+id/img_movies_upload"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/sunset01"
+            android:src="@drawable/add_image"
             android:padding="16dp"/>
         <EditText
             android:id="@+id/editText_movies_name"

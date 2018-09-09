@@ -36,7 +36,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
 
         Picasso.get()
                 .load(movies.getImgRes())
-                .placeholder(R.drawable.sunset01)
+                .placeholder(R.drawable.placeholder_img)
                 .into(moviesImg);
         moviesTitle.setText(movies.getTitle());
     }
