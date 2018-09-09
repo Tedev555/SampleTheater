@@ -7,7 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,11 +22,16 @@ import me.thanongsine.sampletheater.fragments.MoviesListFragment;
 import me.thanongsine.sampletheater.fragments.SigninFragment;
 
 public class MainActivity extends AppCompatActivity {
+    private FirebaseAuth mAuth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         selectFragment(MoviesListFragment.newInstance());
@@ -35,7 +44,13 @@ public class MainActivity extends AppCompatActivity {
                         selectFragment(MoviesListFragment.newInstance());
                         break;
                     case R.id.action_manage_movies:
-                        selectFragment(SigninFragment.newInstance());
+                        if (user != null) {
+                            Log.e("MainActivityLog", "Have a user");
+                            selectFragment(ManageMoviesFragment.newInstance());
+                        } else {
+                            Log.e("MainActivityLog", "User is Null");
+                            selectFragment(SigninFragment.newInstance());
+                        }
                         break;
                     case R.id.action_about:
                         selectFragment(AboutFragment.newInstance());
