@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.thanongsine.sampletheater.fragments.MoviesListFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,13 +17,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Movies> moviesList = createMoviesData();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, MoviesListFragment.newInstance())
+                .commit();
 
-        RecyclerView moviesListRecyclerView = findViewById(R.id.movies_list_recyclerView);
-        MoviesListAdapter adapter = new MoviesListAdapter(moviesList);
-        moviesListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        moviesListRecyclerView.setAdapter(adapter);
+//        List<Movies> moviesList = createMoviesData();
+//
+//        RecyclerView moviesListRecyclerView = findViewById(R.id.movies_list_recyclerView);
+//        MoviesListAdapter adapter = new MoviesListAdapter(moviesList);
+//        moviesListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//
+//        moviesListRecyclerView.setAdapter(adapter);
     }
 
     private List<Movies> createMoviesData() {
