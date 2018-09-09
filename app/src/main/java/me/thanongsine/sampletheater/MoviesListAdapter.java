@@ -35,10 +35,10 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
         TextView moviesTitle = viewHolder.moviesTitleTextView;
 
         Picasso.get()
-                .load("https://i2.wp.com/speculativechic.com/wp-content/uploads/2017/05/kubo-main_0.jpeg?resize=600%2C379")
+                .load(movies.getImgRes())
                 .placeholder(R.drawable.sunset01)
                 .into(moviesImg);
-        moviesTitle.setText("Kubo");
+        moviesTitle.setText(movies.getTitle());
     }
 
     @Override

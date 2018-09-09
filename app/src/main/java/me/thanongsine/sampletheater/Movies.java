@@ -1,18 +1,15 @@
 package me.thanongsine.sampletheater;
 
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class Movies {
-    private Integer imgRes;
+    private String imgRes;
     private String title;
 
-    public Movies(Integer imgRes, String title) {
+    public Movies(String imgRes, String title) {
         this.imgRes = imgRes;
         this.title = title;
     }
 
-    public Integer getImgRes() {
+    public String getImgRes() {
         return imgRes;
     }
 

@@ -48,7 +48,7 @@ public class MoviesListFragment extends Fragment {
         List<Movies> moviesList = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
-            Movies movies = new Movies(R.drawable.kubo_movies, "Kubo Two Strings");
+            Movies movies = new Movies("https://i2.wp.com/speculativechic.com/wp-content/uploads/2017/05/kubo-main_0.jpeg?resize=600%2C379", "Kubo Two Strings");
             moviesList.add(movies);
         }
 

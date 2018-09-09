@@ -58,8 +58,8 @@ public class ManageMoviesFragment extends Fragment {
 
     private void addNewMovies(Integer moviesImgUrl, String moviesName) {
         String moviesId = mDatabase.child("movieslist").push().getKey();
-        Movies movies = new Movies(moviesImgUrl, moviesName);
+//        Movies movies = new Movies(moviesImgUrl, moviesName);
 
-        mDatabase.child("movieslist").child(moviesId).setValue(movies);
+//        mDatabase.child("movieslist").child(moviesId).setValue(movies);
     }
 }
