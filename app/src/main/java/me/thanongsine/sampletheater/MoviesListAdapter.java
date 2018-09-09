@@ -13,7 +13,7 @@ import java.util.List;
 public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.ViewHolder>{
     private List<Movies> moviesList;
 
-    MoviesListAdapter(List<Movies> moviesList) {
+    public MoviesListAdapter(List<Movies> moviesList) {
         this.moviesList = moviesList;
     }
 

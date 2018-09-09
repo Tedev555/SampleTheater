@@ -7,7 +7,7 @@ public class Movies {
     private Integer imgRes;
     private String title;
 
-    Movies(Integer imgRes, String title) {
+    public Movies(Integer imgRes, String title) {
         this.imgRes = imgRes;
         this.title = title;
     }

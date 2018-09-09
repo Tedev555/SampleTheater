@@ -20,24 +20,5 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, MoviesListFragment.newInstance())
                 .commit();
-
-//        List<Movies> moviesList = createMoviesData();
-//
-//        RecyclerView moviesListRecyclerView = findViewById(R.id.movies_list_recyclerView);
-//        MoviesListAdapter adapter = new MoviesListAdapter(moviesList);
-//        moviesListRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        moviesListRecyclerView.setAdapter(adapter);
-    }
-
-    private List<Movies> createMoviesData() {
-        List<Movies> moviesList = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            Movies movies = new Movies(R.drawable.kubo_movies, "Kubo Two Strings");
-            moviesList.add(movies);
-        }
-
-        return moviesList;
     }
 }
