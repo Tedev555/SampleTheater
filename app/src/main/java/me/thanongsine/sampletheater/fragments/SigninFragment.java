@@ -54,6 +54,9 @@ public class SigninFragment extends Fragment {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Log.w("SigningFragmentLog", "signInWithEmail:True");
+                                    getActivity().getSupportFragmentManager().beginTransaction()
+                                            .replace(R.id.fragment_container, new ManageMoviesFragment())
+                                            .commit();
                                 } else {
                                     Log.w("SigningFragmentLog", "signInWithEmail:Fail");
                                 }
