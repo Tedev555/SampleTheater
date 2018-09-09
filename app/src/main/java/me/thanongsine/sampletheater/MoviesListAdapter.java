@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.ViewHolder>{
@@ -32,8 +34,11 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
         ImageView moviesImg = viewHolder.moviesImg;
         TextView moviesTitle = viewHolder.moviesTitleTextView;
 
-        moviesImg.setImageResource(movies.getImgRes());
-        moviesTitle.setText(movies.getTitle());
+        Picasso.get()
+                .load("https://i2.wp.com/speculativechic.com/wp-content/uploads/2017/05/kubo-main_0.jpeg?resize=600%2C379")
+                .placeholder(R.drawable.sunset01)
+                .into(moviesImg);
+        moviesTitle.setText("Kubo");
     }
 
     @Override
