@@ -4,6 +4,8 @@ public class Movies {
     private String imgRes;
     private String title;
 
+    public Movies() {}
+
     public Movies(String imgRes, String title) {
         this.imgRes = imgRes;
         this.title = title;
