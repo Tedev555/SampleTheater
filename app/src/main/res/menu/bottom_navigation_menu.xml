@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/action_movies_list"
         android:enabled="true"
         android:icon="@drawable/ic_home_white_24dp"
         android:title="@string/movies_list_str"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_learn"
+        android:id="@+id/action_manage_movies"
         android:enabled="true"
         android:icon="@drawable/ic_book_white_24dp"
         android:title="@string/manage_movies_str"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_profile"
+        android:id="@+id/action_about"
         android:enabled="true"
         android:icon="@drawable/ic_perm_identity_white_24dp"
         android:title="@string/about_str"
