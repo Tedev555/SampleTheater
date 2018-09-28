@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,9 @@ public class ManageMoviesFragment extends Fragment {
     private Uri uri;
     private boolean aBoolean;
     private ImageView uploadImg;
+    private ProgressBar progressBar;
+    EditText moviesNameEditText;
+    Button btnSave;
 
     public static Fragment newInstance() {
 
@@ -62,20 +66,26 @@ public class ManageMoviesFragment extends Fragment {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         uploadImg = view.findViewById(R.id.img_movies_upload);
+        progressBar = view.findViewById(R.id.progressbar);
+
+        progressBar.setVisibility(View.GONE);
+
         uploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getImageFromDevice();
             }
         });
-        final EditText moviesNameEditText = view.findViewById(R.id.editText_movies_name);
-        Button btnSave = view.findViewById(R.id.btn_save);
+        moviesNameEditText = view.findViewById(R.id.editText_movies_name);
+        btnSave = view.findViewById(R.id.btn_save);
 
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnSave.setClickable(false);
+                progressBar.setVisibility(View.VISIBLE);
                 uploadImageToFirebase(moviesNameEditText.getText().toString());
             }
         });
@@ -89,12 +99,21 @@ public class ManageMoviesFragment extends Fragment {
         startActivityForResult(Intent.createChooser(intent, "Please Choose App"), 1);
     }
 
-    private void addNewMovies(String moviesImgUrl, String moviesName) {
+    private void addNewMovies(String moviesImgUrl, final String moviesName) {
         String moviesId = mDatabase.child("movieslist").push().getKey();
 
         Movies movies = new Movies(moviesImgUrl, moviesName);
 
-        mDatabase.child("movieslist").child(moviesId).setValue(movies);
+        mDatabase.child("movieslist").child(moviesId).setValue(movies).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(getContext(), "Upload Data is finished", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                btnSave.setClickable(true);
+                uploadImg.setImageResource(R.drawable.add_image);
+                moviesNameEditText.getText().clear();
+            }
+        });
     }
 
     @Override
@@ -134,7 +153,6 @@ public class ManageMoviesFragment extends Fragment {
                 if (!task.isSuccessful()) {
                     throw Objects.requireNonNull(task.getException());
                 }
-
                 // Continue with the task to get the download URL
                 return moveisImageRef.getDownloadUrl();
             }
@@ -147,7 +165,6 @@ public class ManageMoviesFragment extends Fragment {
                     addNewMovies(downloadUri.toString(),moviesName);
                 } else {
                     // Handle failures
-                    // ...
                 }
             }
         });

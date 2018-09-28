@@ -31,6 +31,7 @@ public class MoviesListAdapter extends RecyclerView.Adapter<MoviesListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Movies movies = moviesList.get(i);
+
         ImageView moviesImg = viewHolder.moviesImg;
         TextView moviesTitle = viewHolder.moviesTitleTextView;
 

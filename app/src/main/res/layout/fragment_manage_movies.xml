@@ -39,6 +39,13 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/colorPrimary"
             android:textColor="@android:color/white"/>
+        <ProgressBar
+            android:layout_marginTop="16dp"
+            android:id="@+id/progressbar"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
